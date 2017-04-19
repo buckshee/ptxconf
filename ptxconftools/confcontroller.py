@@ -92,18 +92,22 @@ class ConfController():
         return command
 
     def setDeviceCTM(self, id, ctm="0.5 0 0.5 0 1 0 0 0 1"):
+        print ("xinput set-prop %d 'Coordinate Transformation Matrix' %s" % (id, ctm))
         command = subprocess.Popen("xinput set-prop %d 'Coordinate Transformation Matrix' %s" % (id, ctm), shell=True, stdout=subprocess.PIPE).stdout.read()
         return command
 
     def resetDeviceCTM(self, id):
+        print ("xinput set-prop %d 'Coordinate Transformation Matrix' 1 0 0 0 1 0 0 0 1" % id)
         command = subprocess.Popen("xinput set-prop %d 'Coordinate Transformation Matrix' 1 0 0 0 1 0 0 0 1" % id, shell=True, stdout=subprocess.PIPE).stdout.read()
         return command
 
     def setDeviceAxesSwap(self, id, swap=False):
+        print ("xinput set-prop %d 'Evdev Axes Swap' %d" % (id, int(swap)))
         command = subprocess.Popen("xinput set-prop %d 'Evdev Axes Swap' %d" % (id, int(swap)), shell=True, stdout=subprocess.PIPE).stdout.read()
         return command
 
     def setDeviceAxisInversion(self, id, xinv=False, yinv=False):
+        print ("xinput set-prop %d 'Evdev Axis Inversion' %d %d" % (id, int(xinv), int(yinv)))
         command = subprocess.Popen("xinput set-prop %d 'Evdev Axis Inversion' %d %d" % (id, int(xinv), int(yinv)), shell=True, stdout=subprocess.PIPE).stdout.read()
         return command
 

@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python2
 import ptxconftools
 from ptxconftools import ConfController
 from ptxconftools.gtk import MonitorSelector
